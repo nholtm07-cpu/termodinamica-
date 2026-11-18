@@ -1,0 +1,6 @@
+{
+  "name": "FluidoTermo Lab · MEC110 y MEC120",
+  "description": "Laboratorio universitario interactivo de Termodinámica (MEC110) y Mecánica de Fluidos (MEC120) con motor IAPWS-IF97, cuatro simuladores científicos y pizarra paso a paso.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,177 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --ft-bg: #070D18;
+    --ft-bg-alt: #0B1322;
+    --ft-surface: #0F1A2E;
+    --ft-surface-elevated: #14223B;
+    --ft-surface-well: #091120;
+    --ft-border: rgba(148, 184, 224, 0.14);
+    --ft-border-strong: rgba(148, 184, 224, 0.28);
+    --ft-text: #F1F5F9;
+    --ft-text-secondary: #CBD5E1;
+    --ft-text-muted: #94A3B8;
+    --ft-cyan: #38BDF8;
+    --ft-teal: #2DD4BF;
+    --ft-amber: #F59E0B;
+    --ft-heat: #F97316;
+    --ft-crimson: #F87171;
+    --ft-emerald: #34D399;
+  }
+
+  html {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--ft-bg);
+    color: var(--ft-text);
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--ft-bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(56, 189, 248, 0.08), transparent),
+      radial-gradient(ellipse 60% 45% at 88% 8%, rgba(245, 158, 11, 0.05), transparent);
+    background-attachment: fixed;
+    color: var(--ft-text);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', 'DM Sans', system-ui, sans-serif;
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ft-cyan);
+    outline-offset: 2px;
+  }
+}
+
+/* Blueprint engineering coordinate grid (sutil, sin ruido) */
+.ft-blueprint-bg {
+  background-image:
+    linear-gradient(to right, rgba(148, 184, 224, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 184, 224, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Superficie estructural estándar (elevación única, contorno fino) */
+.ft-panel {
+  background-color: var(--ft-surface);
+  border: 1px solid var(--ft-border);
+  border-radius: 0.875rem;
+  box-shadow: 0 10px 30px -14px rgba(2, 6, 16, 0.75);
+}
+
+.ft-well {
+  background-color: var(--ft-surface-well);
+  border: 1px solid rgba(148, 184, 224, 0.11);
+  border-radius: 0.625rem;
+}
+
+/* Instrumento deslizante calibrado (slider técnico de laboratorio) */
+.ft-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.25) 0%, rgba(45, 212, 191, 0.35) 50%, rgba(245, 158, 11, 0.35) 100%);
+  border: 1px solid rgba(148, 184, 224, 0.18);
+  cursor: pointer;
+  transition: border-color 160ms ease;
+}
+
+.ft-slider:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.ft-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #F1F5F9;
+  border: 2.5px solid #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16), 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), border-color 150ms ease;
+}
+
+.ft-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  border-color: #2DD4BF;
+}
+
+.ft-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #F1F5F9;
+  border: 2.5px solid #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16), 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animación sutil de flujo térmico en diagramas SVG */
+@keyframes ftFlowDash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.ft-flow-dash {
+  stroke-dasharray: 6 6;
+  animation: ftFlowDash 1.8s linear infinite;
+}
+
+/* KaTeX dark mode optical polish */
+.katex {
+  font-size: 1.03em;
+  color: inherit;
+}
+
+.katex-display {
+  margin: 0.65rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.25rem;
+}
+
+/* Scrollbar sobria */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ft-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E314A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2C4668;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
